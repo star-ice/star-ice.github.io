@@ -161,6 +161,119 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-反爬虫技术-Headers"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/10/16/反爬虫技术-Headers/">反爬虫技术--Headers</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/10/16/反爬虫技术-Headers/" class="article-date">
+	  <time datetime="2018-10-16T12:39:55.000Z" itemprop="datePublished">October 16, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是爬虫和反爬虫"><a href="#什么是爬虫和反爬虫" class="headerlink" title="什么是爬虫和反爬虫"></a><em>什么是爬虫和反爬虫</em></h3><blockquote>
+<p>####这里引用携程对其的定义</p>
+<ul>
+<li>爬虫：使用任何技术手段，批量获取网站信息的一种方式。关键在于批量。</li>
+<li>反爬虫：使用任何技术手段，阻止别人批量获取自己网站信息的一种方式。关键也在于批量。</li>
+</ul>
+<p>####这里是一些其他的相关术语的定义</p>
+<ul>
+<li>误伤：在反爬虫的过程中，错误的将普通用户识别为爬虫。误伤率高的反爬虫策略，效果再好也不能用。</li>
+<li>拦截：成功地阻止爬虫访问。这里会有拦截率的概念。通常来说，拦截率越高的反爬虫策略，误伤的可能性就越高。因此需要做个权衡。</li>
+<li>资源：机器成本与人力成本的总和。</li>
+</ul>
+</blockquote>
+<h3 id="图解用户访问请求网站的过程"><a href="#图解用户访问请求网站的过程" class="headerlink" title="图解用户访问请求网站的过程"></a><em>图解用户访问请求网站的过程</em></h3><p><img src="https://res.cloudinary.com/diurnc1lm/image/upload/v1539689151/hexo/HTTP_PROCESS.png" alt=""></p>
+<blockquote>
+<p>在建立TCP连接之后，客户端就会发送HTTP请求报文，这里也同样包括了HTTP Headers的信息，之后服务器端会对HTTP请求报文进行处理，这里就会经过服务器目标网站的爬虫检测机制（对 HTTP Headers 进行校验），如果验证通过，则正常返回目标网站内容</p>
+</blockquote>
+<h3 id="Headers反爬虫技术"><a href="#Headers反爬虫技术" class="headerlink" title="Headers反爬虫技术"></a><em>Headers反爬虫技术</em></h3><p>#####1. 服务器端可以根据 HTTP Headers 中的 User-Agent<a href="向访问网站提供你所使用的浏览器类型及版本、操作系统及版本、浏览器内核、等信息的标识">^1</a> 来检查客户端是否是一个合法的浏览器程序，即获得同频（浏览器加载这个页面的完整文档）</p>
+<p>#####2. 服务器也可以利用浏览器 HTTP Headers 指纹[^2]，根据客户端声明的浏览器的厂商以及版本（来自 User-Agent ），鉴别出 Headers 中的各字段是否符合该浏览器的特征</p>
+<p>#####3. 服务器端可以对所有访问页面的 HTTP 请求在 HTTP response 中种下一个 cookie token ，然后在这个页面内异步执行的一些 Ajax 接口里去校验来访请求是否会有该 cookie token ，如果有则表明是一个合法的浏览器来访</p>
+<p>######ps：页面的所有核心内容都可以做成 JS 异步请求 Ajax 获取数据后渲染在页面中，增加爬虫爬取的难度</p>
+<p>[^2]: 比如硬件类型（Apple）、操作系统（Mac OS）、用户代理（User agent）、系统字体、语言、屏幕分辨率、浏览器插件 (Flash, Silverlight, Java, etc)、浏览器扩展、浏览器设置 (Do-Not-Track, etc)、时区差（Browser GMT Offset）等众多信息，可以辅助识别浏览器信息</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/anti-crawler/">anti-crawler</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Writing_Requests"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/05/06/Writing_Requests/">IELTS Writing Requests</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/05/06/Writing_Requests/" class="article-date">
+	  <time datetime="2018-05-06T01:10:05.632Z" itemprop="datePublished">May 6, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="DO-YOU-KNOW"><a href="#DO-YOU-KNOW" class="headerlink" title="DO YOU KNOW?"></a>DO YOU KNOW?</h3><blockquote>
+<p>Most people in China claimed that Writing is one of the most difficult parts in IELTS, another part is Speaking. IELTS Writing has a lot of requirements for examinees. Examinees are not only required to be logical but also to write consistently and accurately.</p>
+</blockquote>
+<h3 id="IELTS-Writing-have-4-requests"><a href="#IELTS-Writing-have-4-requests" class="headerlink" title="IELTS Writing have 4 requests"></a>IELTS Writing have 4 requests</h3><blockquote>
+<p>1.Task response<br>&nbsp;&nbsp;&nbsp;&nbsp;  Read writing question carefully and Be sure that you understand it. You have to comprehend what the question focus on and what contents that your answer should include.<br>2.Coherence &amp; cohesion<br>&nbsp;&nbsp;&nbsp;&nbsp;  This means your essay ought to have a <strong>logical structure</strong>. If you point out an opinion, you must give out supporting point so that your opinion will not be weak and if necessary, give out some examples. Besides, a good link is vital between one opinion to another. Your essay should not be separate.<br>3.Lexical resource(accurate &amp; approperate)<br>&nbsp;&nbsp;&nbsp;&nbsp;  Some words such as “good”, “kind” ,”think” appearance frequently in Chinese examinees’ essaies. It’s not a positive performance for one’s Lexical resource. <strong>Try to replace those words to an advanced vocabulary</strong>. If you are rich in lexical resource, you must not use any advanced word in your essay. <strong>Try to use them appropriately</strong>.<br>4.Grammatical range &amp; accuracy<br>&nbsp;&nbsp;&nbsp;&nbsp;  Use independent sentence, dependent sentence, compound sentence, complex sentence and conjunctive adverb correctly. </p>
+</blockquote>
+<h3 id="How-to-finish-a-paragraph"><a href="#How-to-finish-a-paragraph" class="headerlink" title="How to finish a paragraph?"></a>How to finish a paragraph?</h3><h3 id="what-is-the-structure-of-each-question-type"><a href="#what-is-the-structure-of-each-question-type" class="headerlink" title="what is the structure of each question type?"></a>what is the structure of each question type?</h3><h3 id="what-is-the-structure-of-introductory-paragraph"><a href="#what-is-the-structure-of-introductory-paragraph" class="headerlink" title="what is the structure of introductory paragraph?"></a>what is the structure of introductory paragraph?</h3><h3 id="what-is-the-structure-of-middle-paragraph"><a href="#what-is-the-structure-of-middle-paragraph" class="headerlink" title="what is the structure of middle paragraph?"></a>what is the structure of middle paragraph?</h3><h3 id="what-is-the-structure-of-conclusion-paragraph"><a href="#what-is-the-structure-of-conclusion-paragraph" class="headerlink" title="what is the structure of conclusion paragraph?"></a>what is the structure of conclusion paragraph?</h3>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-English_Grammer"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -198,7 +311,6 @@ var themeMenus = {};
 </blockquote>
 <blockquote>
 <p>Some types of subordinate clause are introduced by subordinating conjunctions, others (such as relative clauses) are not. Common subordinating conjunctions include</p>
-</blockquote>
 <ul>
 <li>as , because and since  (cause)</li>
 <li>so and so that  (purpose)</li>
@@ -207,6 +319,7 @@ var themeMenus = {};
 <li>if, unless, as long as, provided, whenever, whatever (conditional, indirect question)</li>
 <li>that (reported speech, indirect statement, consequential)</li>
 </ul>
+</blockquote>
 <h3 id="4-What-the-differences-between-this-two-conjunctions-when-they-link-two-sentences-point-out-the-type-of-each-sentence"><a href="#4-What-the-differences-between-this-two-conjunctions-when-they-link-two-sentences-point-out-the-type-of-each-sentence" class="headerlink" title="4.What the differences between this two conjunctions    when they link two sentences(point out the type of each sentence)?"></a>4.What the differences between this two conjunctions    when they link two sentences(point out the type of each sentence)?</h3><h4 id="①Coordinate-conjunctions"><a href="#①Coordinate-conjunctions" class="headerlink" title="①Coordinate conjunctions"></a>①Coordinate conjunctions</h4><blockquote>
 <p><u>independent sentence</u> <strong>, coo</strong> <u>independent sentence</u></p>
 </blockquote>
@@ -406,6 +519,30 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2018/10/16/反爬虫技术-Headers/">反爬虫技术--Headers</a></h6>
+              <span>October 16, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/05/06/Writing_Requests/">IELTS Writing Requests</a></h6>
+              <span>May 6, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2018/05/05/English_Grammer/">English Grammer</a></h6>
               <span>May 5, 2018</span>
             </div>
@@ -433,16 +570,30 @@ var themeMenus = {};
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/anti-crawler/">anti-crawler</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/anti-crawler/" style="font-size: 10px;">anti-crawler</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
