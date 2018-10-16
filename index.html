@@ -186,12 +186,12 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="什么是爬虫和反爬虫"><a href="#什么是爬虫和反爬虫" class="headerlink" title="什么是爬虫和反爬虫"></a><em>什么是爬虫和反爬虫</em></h3><blockquote>
-<p>####这里引用携程对其的定义</p>
+<p>这里引用携程对其的定义</p>
 <ul>
 <li>爬虫：使用任何技术手段，批量获取网站信息的一种方式。关键在于批量。</li>
 <li>反爬虫：使用任何技术手段，阻止别人批量获取自己网站信息的一种方式。关键也在于批量。</li>
 </ul>
-<p>####这里是一些其他的相关术语的定义</p>
+<p>这里是一些其他的相关术语的定义</p>
 <ul>
 <li>误伤：在反爬虫的过程中，错误的将普通用户识别为爬虫。误伤率高的反爬虫策略，效果再好也不能用。</li>
 <li>拦截：成功地阻止爬虫访问。这里会有拦截率的概念。通常来说，拦截率越高的反爬虫策略，误伤的可能性就越高。因此需要做个权衡。</li>
@@ -202,11 +202,7 @@ var themeMenus = {};
 <blockquote>
 <p>在建立TCP连接之后，客户端就会发送HTTP请求报文，这里也同样包括了HTTP Headers的信息，之后服务器端会对HTTP请求报文进行处理，这里就会经过服务器目标网站的爬虫检测机制（对 HTTP Headers 进行校验），如果验证通过，则正常返回目标网站内容</p>
 </blockquote>
-<h3 id="Headers反爬虫技术"><a href="#Headers反爬虫技术" class="headerlink" title="Headers反爬虫技术"></a><em>Headers反爬虫技术</em></h3><p>#####1. 服务器端可以根据 HTTP Headers 中的 User-Agent<a href="向访问网站提供你所使用的浏览器类型及版本、操作系统及版本、浏览器内核、等信息的标识">^1</a> 来检查客户端是否是一个合法的浏览器程序，即获得同频（浏览器加载这个页面的完整文档）</p>
-<p>#####2. 服务器也可以利用浏览器 HTTP Headers 指纹[^2]，根据客户端声明的浏览器的厂商以及版本（来自 User-Agent ），鉴别出 Headers 中的各字段是否符合该浏览器的特征</p>
-<p>#####3. 服务器端可以对所有访问页面的 HTTP 请求在 HTTP response 中种下一个 cookie token ，然后在这个页面内异步执行的一些 Ajax 接口里去校验来访请求是否会有该 cookie token ，如果有则表明是一个合法的浏览器来访</p>
-<p>######ps：页面的所有核心内容都可以做成 JS 异步请求 Ajax 获取数据后渲染在页面中，增加爬虫爬取的难度</p>
-<p>[^2]: 比如硬件类型（Apple）、操作系统（Mac OS）、用户代理（User agent）、系统字体、语言、屏幕分辨率、浏览器插件 (Flash, Silverlight, Java, etc)、浏览器扩展、浏览器设置 (Do-Not-Track, etc)、时区差（Browser GMT Offset）等众多信息，可以辅助识别浏览器信息</p>
+<h3 id="Headers反爬虫技术"><a href="#Headers反爬虫技术" class="headerlink" title="Headers反爬虫技术"></a><em>Headers反爬虫技术</em></h3><h5 id="1-服务器端可以根据-HTTP-Headers-中的-User-Agent-1-来检查客户端是否是一个合法的浏览器程序，即获得同频（浏览器加载这个页面的完整文档）"><a href="#1-服务器端可以根据-HTTP-Headers-中的-User-Agent-1-来检查客户端是否是一个合法的浏览器程序，即获得同频（浏览器加载这个页面的完整文档）" class="headerlink" title="1. 服务器端可以根据 HTTP Headers 中的 User-Agent^1 来检查客户端是否是一个合法的浏览器程序，即获得同频（浏览器加载这个页面的完整文档）"></a>1. 服务器端可以根据 HTTP Headers 中的 User-Agent<a href="向访问网站提供你所使用的浏览器类型及版本、操作系统及版本、浏览器内核、等信息的标识">^1</a> 来检查客户端是否是一个合法的浏览器程序，即获得同频（浏览器加载这个页面的完整文档）</h5><h5 id="2-服务器也可以利用浏览器-HTTP-Headers-指纹-2-，根据客户端声明的浏览器的厂商以及版本（来自-User-Agent-），鉴别出-Headers-中的各字段是否符合该浏览器的特征"><a href="#2-服务器也可以利用浏览器-HTTP-Headers-指纹-2-，根据客户端声明的浏览器的厂商以及版本（来自-User-Agent-），鉴别出-Headers-中的各字段是否符合该浏览器的特征" class="headerlink" title="2. 服务器也可以利用浏览器 HTTP Headers 指纹[^2]，根据客户端声明的浏览器的厂商以及版本（来自 User-Agent ），鉴别出 Headers 中的各字段是否符合该浏览器的特征"></a>2. 服务器也可以利用浏览器 HTTP Headers 指纹[^2]，根据客户端声明的浏览器的厂商以及版本（来自 User-Agent ），鉴别出 Headers 中的各字段是否符合该浏览器的特征</h5><h5 id="3-服务器端可以对所有访问页面的-HTTP-请求在-HTTP-response-中种下一个-cookie-token-，然后在这个页面内异步执行的一些-Ajax-接口里去校验来访请求是否会有该-cookie-token-，如果有则表明是一个合法的浏览器来访"><a href="#3-服务器端可以对所有访问页面的-HTTP-请求在-HTTP-response-中种下一个-cookie-token-，然后在这个页面内异步执行的一些-Ajax-接口里去校验来访请求是否会有该-cookie-token-，如果有则表明是一个合法的浏览器来访" class="headerlink" title="3. 服务器端可以对所有访问页面的 HTTP 请求在 HTTP response 中种下一个 cookie token ，然后在这个页面内异步执行的一些 Ajax 接口里去校验来访请求是否会有该 cookie token ，如果有则表明是一个合法的浏览器来访"></a>3. 服务器端可以对所有访问页面的 HTTP 请求在 HTTP response 中种下一个 cookie token ，然后在这个页面内异步执行的一些 Ajax 接口里去校验来访请求是否会有该 cookie token ，如果有则表明是一个合法的浏览器来访</h5><h6 id="ps：页面的所有核心内容都可以做成-JS-异步请求-Ajax-获取数据后渲染在页面中，增加爬虫爬取的难度"><a href="#ps：页面的所有核心内容都可以做成-JS-异步请求-Ajax-获取数据后渲染在页面中，增加爬虫爬取的难度" class="headerlink" title="ps：页面的所有核心内容都可以做成 JS 异步请求 Ajax 获取数据后渲染在页面中，增加爬虫爬取的难度"></a>ps：页面的所有核心内容都可以做成 JS 异步请求 Ajax 获取数据后渲染在页面中，增加爬虫爬取的难度</h6><p>[^2]: 比如硬件类型（Apple）、操作系统（Mac OS）、用户代理（User agent）、系统字体、语言、屏幕分辨率、浏览器插件 (Flash, Silverlight, Java, etc)、浏览器扩展、浏览器设置 (Do-Not-Track, etc)、时区差（Browser GMT Offset）等众多信息，可以辅助识别浏览器信息</p>
 
       
     </div>
