@@ -161,6 +161,96 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-Python-Encoding-Format"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/03/24/Python-Encoding-Format/">Python Encoding Format</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/03/24/Python-Encoding-Format/" class="article-date">
+	  <time datetime="2019-03-24T15:16:31.000Z" itemprop="datePublished">March 24, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="常见的编码类型"><a href="#常见的编码类型" class="headerlink" title="常见的编码类型"></a><em>常见的编码类型</em></h3><ol><br><li>ASCII码，用1个字节存储英文和字符，包含256个字符</li><br><li>Unicode码，2个字节</li><br><li>UTF-8，可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。而对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。</li><br></ol>
+
+<h3 id="Python中的编码"><a href="#Python中的编码" class="headerlink" title="Python中的编码"></a><em>Python中的编码</em></h3><p>Python2中默认使用ASCII编码格式，而Python3中就变成了更为方便的UTF-8，具体查看编码代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">print(sys.getdefaultencoding())</span><br><span class="line">#输出为&apos;utf-8&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="转码过程"><a href="#转码过程" class="headerlink" title="转码过程"></a><em>转码过程</em></h3><p>有时会遇到在.py文件中出现中文时，报<i>SyntaxError: Non-ASCII character ‘\xe4’ in file t.py on line 4, but no encoding declared; see <a href="http://www.python.org/peps/pep-0263.html" target="_blank" rel="noopener">http://www.python.org/peps/pep-0263.html</a> for details</i>错误，这是因为在编译过程中无法识别非ASCII码造成的；当我们从外部读取中文内容时也常常会出现乱码，也经常会出现中文乱码的现象，这是因为中文字符串的编码和Python的编码不一致而造成的。为了解决这些中文编码问题，通常需要借助于Unicode来实现中文字符解码到编码指定输出编码类型的过程。<br></p>
+<p><center>☆其他类型编码的字符串<font color="#808080"> — decode — &gt; </font>unicode<font color="#808080"> — encode — &gt; </font>指定编码☆</center><br>代码实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.decode(&apos;gb2312&apos;)#将编码格式为gb2312的字符串转为unicode编码</span><br><span class="line">str.encode(&apos;utf-8&apos;)#再转为utf-8编码</span><br></pre></td></tr></table></figure>
+<hr>
+<h6 id="ps：代码中字符串的默认编码与代码文件本身的编码是一致的，在scrapy中可以通过设置FEED-EXPORT-ENCODING-‘utf-8’来指定爬取结果的输出编码"><a href="#ps：代码中字符串的默认编码与代码文件本身的编码是一致的，在scrapy中可以通过设置FEED-EXPORT-ENCODING-‘utf-8’来指定爬取结果的输出编码" class="headerlink" title="ps：代码中字符串的默认编码与代码文件本身的编码是一致的，在scrapy中可以通过设置FEED_EXPORT_ENCODING = ‘utf-8’来指定爬取结果的输出编码"></a>ps：代码中字符串的默认编码与代码文件本身的编码是一致的，在scrapy中可以通过设置<i>FEED_EXPORT_ENCODING = ‘utf-8’</i>来指定爬取结果的输出编码</h6>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-使用scrapy-pipeline下载图片"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/10/29/使用scrapy-pipeline下载图片/">使用scrapy pipeline下载图片</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/10/29/使用scrapy-pipeline下载图片/" class="article-date">
+	  <time datetime="2018-10-29T03:02:49.000Z" itemprop="datePublished">October 29, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-反爬虫技术-Headers"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -522,6 +612,30 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/03/24/Python-Encoding-Format/">Python Encoding Format</a></h6>
+              <span>March 24, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/10/29/使用scrapy-pipeline下载图片/">使用scrapy pipeline下载图片</a></h6>
+              <span>October 29, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2018/10/16/反爬虫技术-Headers/">反爬虫技术--Headers</a></h6>
               <span>October 16, 2018</span>
             </div>
@@ -596,7 +710,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -610,7 +724,7 @@ var themeMenus = {};
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2018 Hexo All Rights Reserved.
+	      &copy; 2019 Hexo All Rights Reserved.
           
             <span id="busuanzi_container_site_uv">
               本站访客数<span id="busuanzi_value_site_uv"></span>人次  
